@@ -48,7 +48,7 @@ const BlogIndex = ({
                     <GatsbyImage
                       image={featuredImage.data}
                       alt={featuredImage.alt}
-                      style={{ marginBottom: 50 }}
+                      style={{ marginBottom: 10 }}
                       className="card-img-top"
                     />
                   )}

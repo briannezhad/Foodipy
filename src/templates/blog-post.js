@@ -30,30 +30,34 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+          
+        <div className="row">
+          <div class="col background-white py-3">
+            <div class="clearfix">
+              {/* if we have a featured image for this post let's display it */}
+              {featuredImage?.data && (
+                <GatsbyImage
+                  className="col-md-5  float-sm-start m-5 mt-0"
+                  image={featuredImage.data}
+                  alt={featuredImage.alt}
+                />
+              )}
 
-          <p>{post.date}</p>
+              <h1 className="post-title mb-0" itemProp="headline">{parse(post.title)}</h1>
+              <p>{post.date}</p>
+              {!!post.content && (
+                <section className="post-body" itemProp="articleBody">{parse(post.content)}</section>
+              )}
+            </div>
+        </div>
 
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.data && (
-            <GatsbyImage
-              image={featuredImage.data}
-              alt={featuredImage.alt}
-              style={{ marginBottom: 50 }}
-            />
-          )}
-        </header>
 
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
-        )}
+          
+          </div>
 
-        <hr />
+      
 
-        <footer>
-          <Bio />
-        </footer>
+
       </article>
 
       <nav className="blog-post-nav">

@@ -20,18 +20,13 @@ const Layout = ({ isHomePage, children }) => {
 
   return (
     <div className="container-fluid" data-is-root-path={isHomePage}>
-      <header className="nav border-bottom">
-        {isHomePage ? (
-          <h1 className="main-heading">
-            <Link to="/">{parse(title)}</Link>
-          </h1>
-        ) : (
-          <Link className="header-link-home" to="/">
-            <h1 className="main-heading">
+      <header className="nav border-bottom pb-3">
+          <div>
+            <h1 className="main-heading mb-0">
               <Link to="/">{parse(title)}</Link>
             </h1>
-          </Link>
-        )}
+            <span className="slogan">Where Delicious Recipes Belong.</span>
+          </div>
       </header>
 
       <main>{children}</main>

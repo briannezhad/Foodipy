@@ -7,7 +7,12 @@
   color: black;
   text-decoration: none;
   font-family: kepler-std, serif;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  line-height: 0.9rem;
+}
+
+.slogan {
+  font-size: 0.8rem;
 }
 
 .card-title a {
@@ -34,4 +39,15 @@
 
 footer {
   font-family: kepler-std, serif;
+}
+
+.post-title {
+  font-family: kepler-std, serif;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.post-body {
+  font-family: kepler-std, serif;
+  font-size: 1.2rem;
 }
