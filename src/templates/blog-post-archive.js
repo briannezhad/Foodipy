@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -28,34 +29,50 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <Seo title="All posts" />
-
-      <Bio />
-
-      <ol style={{ listStyle: `none` }}>
+        <div className="row py-3">
         {posts.map(post => {
           const title = post.title
-
+          const featuredImage = {
+            data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+            alt: post.featuredImage?.node?.alt || ``,
+          }
           return (
-            <li key={post.uri}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.uri} itemProp="url">
-                      <span itemProp="headline">{parse(title)}</span>
+              <div className="col-md-4">
+                <article 
+                  itemScope
+                  itemType="http://schema.org/Article"
+                  >
+                  <div className="card border-0" key={post.uri}>
+                  {/* if we have a featured image for this post let's display it */}
+                  {featuredImage?.data && (
+                    <GatsbyImage
+                      image={featuredImage.data}
+                      alt={featuredImage.alt}
+                      style={{ marginBottom: 50 }}
+                      className="card-img-top"
+                    />
+                  )}
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      <Link to={post.uri} itemProp="url">
+                        <span itemProp="headline">{parse(title)}</span>
+                      </Link>
+                    </h5>
+                    <p className="card-text border-bottom pb-2">
+                      <section itemProp="description">{parse(post.excerpt)}</section>
+                      <small>{post.date}</small>
+                    </p>
+                    <Link className="btn btn-primary black-button " to={post.uri} itemProp="url">
+                      Go to The Recipe
                     </Link>
-                  </h2>
-                  <small>{post.date}</small>
-                </header>
-                <section itemProp="description">{parse(post.excerpt)}</section>
-              </article>
-            </li>
+                  </div>
+                </div>
+                </article>
+              </div>
+           
           )
         })}
-      </ol>
+       </div>
 
       {previousPagePath && (
         <>
@@ -80,6 +97,20 @@ export const pageQuery = graphql`
       nodes {
         excerpt
         uri
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 100
+                  placeholder: TRACED_SVG
+                  layout: FULL_WIDTH
+                )
+              }
+            }
+          }
+        }
         date(formatString: "MMMM DD, YYYY")
         title
         excerpt

@@ -19,27 +19,27 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
+    <div className="container-fluid" data-is-root-path={isHomePage}>
+      <header className="nav border-bottom">
         {isHomePage ? (
           <h1 className="main-heading">
             <Link to="/">{parse(title)}</Link>
           </h1>
         ) : (
           <Link className="header-link-home" to="/">
-            {title}
+            <h1 className="main-heading">
+              <Link to="/">{parse(title)}</Link>
+            </h1>
           </Link>
         )}
       </header>
 
       <main>{children}</main>
 
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
+      <footer className="border-top pt-2">
+        <small>
+          © {new Date().getFullYear()} Foodipy. All contents of this site belong to Foodipy.
+        </small>
       </footer>
     </div>
   )
