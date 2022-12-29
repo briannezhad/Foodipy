@@ -61,7 +61,7 @@ const BlogIndex = ({
                       </div>
                       <div class="post-card-content">
                           <div class="entry-cat">
-                              <a href="blog-grid.html" class="categorie"> food</a>
+                              <a href="blog-grid.html" class="categorie"> {post.categories.nodes[0].name}</a>
                               </div>
 
                               <h5 class="entry-title">
@@ -71,7 +71,7 @@ const BlogIndex = ({
                               </h5>
 
                           <div class="post-exerpt">
-                              <p><section itemProp="description">{parse(post.excerpt)}</section></p>
+                              <p><section itemProp="description" className="archive-card-text">{parse(post.excerpt)}</section></p>
                           </div>
 
                           <ul class="entry-meta list-inline">
@@ -130,6 +130,11 @@ export const pageQuery = graphql`
       nodes {
         excerpt
         uri
+        categories {
+          nodes {
+            name
+          }
+        }
         featuredImage {
           node {
             altText

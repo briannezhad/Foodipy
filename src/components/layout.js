@@ -32,9 +32,21 @@ const Layout = ({ isHomePage, children }) => {
                             <Link to="/">
                               <img src={Logo} alt="Logo" className="fluid-img" style={{width: 110}} />
                             </Link>
-
                         </div>
                         
+                        <div class="main-menu header-navbar">
+                            <nav class="navbar">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ">
+                                    <li class="nav-item">
+                                        <Link className="nav-link" href="/"> Home </Link>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            </nav>
+                        </div>
+
 
                         <div class="header-action-items">
 
