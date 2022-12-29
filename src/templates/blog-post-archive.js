@@ -29,7 +29,10 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <Seo title="All posts" />
-        <div className="row py-3">
+        <main class="main">
+        <section class="mt-90">
+        <div className="container-fluid">
+        <div className="row">
         {posts.map(post => {
           const title = post.title
           const featuredImage = {
@@ -37,42 +40,72 @@ const BlogIndex = ({
             alt: post.featuredImage?.node?.alt || ``,
           }
           return (
-              <div className="col-md-4">
-                <article 
-                  itemScope
-                  itemType="http://schema.org/Article"
-                  >
-                  <div className="card border-0" key={post.uri}>
-                  {/* if we have a featured image for this post let's display it */}
-                  {featuredImage?.data && (
-                    <GatsbyImage
-                      image={featuredImage.data}
-                      alt={featuredImage.alt}
-                      style={{ marginBottom: 10 }}
-                      className="card-img-top"
-                    />
-                  )}
-                  <div className="card-body">
-                    <h5 className="card-title">
+            <article 
+            itemScope
+            itemType="http://schema.org/Article"
+            class="col-xl-4 col-lg-6 col-md-6 masonry-item" key={post.uri}
+            >
+                  <div class="post-card ">
+                      <div class="post-card-image">
                       <Link to={post.uri} itemProp="url">
-                        <span itemProp="headline">{parse(title)}</span>
-                      </Link>
-                    </h5>
-                    <p className="card-text border-bottom pb-2">
-                      <section itemProp="description">{parse(post.excerpt)}</section>
-                      <small>{post.date}</small>
-                    </p>
-                    <Link className="btn btn-primary black-button " to={post.uri} itemProp="url">
-                      Go to The Recipe
-                    </Link>
+                            {/* if we have a featured image for this post let's display it */}
+                            {featuredImage?.data && (
+                              <GatsbyImage
+                                image={featuredImage.data}
+                                alt={featuredImage.alt}
+                                style={{ marginBottom: 10 }}
+                                className="card-img-top"
+                              />
+                            )}
+                        </Link>
+                      </div>
+                      <div class="post-card-content">
+                          <div class="entry-cat">
+                              <a href="blog-grid.html" class="categorie"> food</a>
+                              </div>
+
+                              <h5 class="entry-title">
+                              <Link to={post.uri} itemProp="url">
+                                <span itemProp="headline">{parse(title)}</span>
+                              </Link>
+                              </h5>
+
+                          <div class="post-exerpt">
+                              <p><section itemProp="description">{parse(post.excerpt)}</section></p>
+                          </div>
+
+                          <ul class="entry-meta list-inline">
+                              {/* <li class="post-author-img"><a href="author.html"> </a></li>
+                              <li class="post-author"><a href="author.html">David Smith</a> </li> */}
+                              <li class="post-date"> <span class="dot"></span>  {post.date}</li>
+                          </ul>
+                      </div>
                   </div>
-                </div>
-                </article>
-              </div>
+
            
-          )
+
+                   {/* <!--pagination--> */}
+                   {/* <div class="row">
+                       <div class="col-lg-12">
+                           <div class="pagination ">
+                               <ul class="list-inline">
+                                   <li class="active"> <a href="#">1</a></li>
+                                   <li><a href="#">2</a></li>
+                                   <li><a href="#">3</a></li>
+                                   <li><a href="#">4</a></li>
+                                   <li><a href="#"><i class="fas fa-arrow-right"></i></a></li>
+                               </ul>
+                           </div>   
+                       </div>
+                   </div> */}
+            </article>
+           
+        )
         })}
-       </div>
+      </div>
+      </div>
+      </section>
+      </main>
 
       {previousPagePath && (
         <>

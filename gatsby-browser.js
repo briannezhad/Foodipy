@@ -10,5 +10,15 @@ import "typeface-merriweather"
 // normalize CSS across browsers
 import "./src/css/normalize.css"
 
+import "./src/css/all.css"
+import "./src/css/bootstrap.min.css"
+import "./src/css/line-awesome.min.css"
+import "./src/css/swiper.min.css"
+
 // custom CSS styles
 import "./src/css/style.css"
+import "./src/css/custom.css"
+
+
+
+
