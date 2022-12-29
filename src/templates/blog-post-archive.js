@@ -16,7 +16,7 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout isHomePage>
-        <Seo title="All posts" />
+        <Seo title="Discover delicious recipes and foodie tips for every occasion." />
         <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
@@ -28,7 +28,7 @@ const BlogIndex = ({
 
   return (
     <Layout isHomePage>
-      <Seo title="All posts" />
+      <Seo title="Discover delicious recipes and foodie tips for every occasion" />
         <main class="main">
         <section class="mt-90">
         <div className="container-fluid">
