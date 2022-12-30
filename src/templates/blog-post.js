@@ -148,24 +148,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                   </div>
                               </div>
                           </div>
-                          <div class="widget">
+                          {/* <div class="widget">
                               <div class="section-title">
                                   <h5>ads</h5>
                               </div>
                               <div class="widget-ads">
-                              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5373069496163959"
-                                  crossorigin="anonymous"></script>
-                                <ins class="adsbygoogle"
-                                  style={{display: 'block'}}
-                                  data-ad-client="ca-pub-5373069496163959"
-                                  data-ad-slot="5975223746"
-                                  data-ad-format="auto"
-                                  data-full-width-responsive="true"></ins>
-                              <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                              </script>
+                              
                               </div>
-                          </div>
+                          </div> */}
                         </div>
                     </div>
                 </div>
