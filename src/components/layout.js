@@ -92,7 +92,7 @@ const Layout = ({ isHomePage, children }) => {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright">
-                            <p>© {new Date().getFullYear()} Foodipy. All contents of this site belong to Foodipy.</p>
+                            <p>© {new Date().getFullYear()} {parse(title)} All contents of this site belong to {parse(title)}.</p>
                         </div>
                         <div class="back">
                             <a href="#" class="back-top">
