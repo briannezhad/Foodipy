@@ -66,6 +66,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                   </ul>
                               </div>
                               <div class="post-single-body">
+                              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5373069496163959" crossorigin="anonymous"></script>
+                                <ins class="adsbygoogle"
+                                    style={{display: 'block'}}
+                                    data-ad-client="ca-pub-5373069496163959"
+                                    data-ad-slot="3093909535"
+                                    data-ad-format="auto"
+                                    data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
                                 {!!post.content && (
                                   <section itemProp="articleBody">{parse(post.content)}</section>
                                 )}
@@ -146,7 +156,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                               <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5373069496163959"
                                   crossorigin="anonymous"></script>
                                 <ins class="adsbygoogle"
-                                  style={{display: 'none'}}
+                                  style={{display: 'block'}}
                                   data-ad-client="ca-pub-5373069496163959"
                                   data-ad-slot="5975223746"
                                   data-ad-format="auto"
