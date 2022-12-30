@@ -6,3 +6,7 @@
            line-clamp: 3; 
    -webkit-box-orient: vertical;
 }
+
+.slider-style2 .swiper-bottom .swiper-slide {
+    margin-right: 20px;
+}

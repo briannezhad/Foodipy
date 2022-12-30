@@ -12,6 +12,30 @@ const BlogIndex = ({
   pageContext: { nextPagePath, previousPagePath },
 }) => {
   const posts = data.allWpPost.nodes
+  const getFeaturedPosts = []
+
+  data.allWpPost.nodes.map(post=>{
+
+    const featuredImage = {
+      data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+      alt: post.featuredImage?.node?.alt || ``,
+    }
+    
+    post.categories.nodes.forEach(category => {
+      console.log(category)
+      if(category.name === 'Featured'){
+        getFeaturedPosts.push({
+          title: post.title,
+          excerpt: post.excerpt,
+          date: post.date,
+          image: featuredImage,
+          uri: post.uri,
+          category: 'Featured'
+        })
+      }
+    });
+  })
+  console.log(getFeaturedPosts)
 
   if (!posts.length) {
     return (
@@ -29,8 +53,69 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <Seo title="Discover delicious recipes and foodie tips for every occasion" />
-        <main class="main">
-        <section class="mt-90">
+        <main className="main">
+
+        <div className="slider-style2">
+            <div  className="swiper swiper-top">
+                <div className="swiper-wrapper">
+                {getFeaturedPosts.map(post => {
+                    return(
+                      <div className="swiper-slide slider-item" style={{backgroundImage: `url(${post.image.data.images.fallback.src})`}} key={post.uri}>
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-xl-7 col-lg-9 col-md-12">
+                                    <div className="slider-item-inner">
+                                        <div className="slider-item-content">
+                                        <div className="entry-cat ">
+                                            <Link href="#" className="categorie">{post.category} </Link> 
+                                        </div>
+                                        <h1 className="entry-title">
+                                            <Link to={post.uri}>{parse(post.title)}</Link>
+                                        </h1>
+                                        <ul className="entry-meta list-inline">
+                                            <li className="post-author-img"><a href="author.html"> 
+                                            {/* <img src="assets/img/author/1.jpg" alt=""> */}
+                                              </a></li>
+                                            <li className="post-date"> <span className="dot"></span>  {post.date}</li>
+                                            {/* <li className="post-timeread"> <span className="dot"></span> 15 min Read</li>
+                                            <li className="post-comment"> <span className="dot"></span> 2 comments</li> */}
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    )
+                })}
+                </div>
+            </div>
+
+            <div thumbsSlider="" className="swiper swiper-bottom container-fluid" >
+                <div className="swiper-wrapper ">
+                {getFeaturedPosts.map(post => {
+                    return(
+                      <div className="swiper-slide">
+                        <div className="post-item">
+                            <img src={post.image.data.images.fallback.src}  alt="" />
+                            <div className="details">
+                                <p className="entry-title"> 
+                                    <span>{post.title}</span>
+                                    </p>
+                                <ul className="entry-meta list-inline">
+                                    <li className="post-date"> <i className="fas fa-clock"></i> {post.date}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    )
+                  })
+              }  
+                </div>
+            </div>      
+        </div>
+
+        <section className="mt-90">
         <div className="container-fluid">
         <div className="row">
         {posts.map(post => {
@@ -43,10 +128,10 @@ const BlogIndex = ({
             <article 
             itemScope
             itemType="http://schema.org/Article"
-            class="col-xl-4 col-lg-6 col-md-6 masonry-item" key={post.uri}
+            className="col-xl-4 col-lg-6 col-md-6 masonry-item" key={post.uri}
             >
-                  <div class="post-card ">
-                      <div class="post-card-image">
+                  <div className="post-card ">
+                      <div className="post-card-image">
                       <Link to={post.uri} itemProp="url">
                             {/* if we have a featured image for this post let's display it */}
                             {featuredImage?.data && (
@@ -59,25 +144,25 @@ const BlogIndex = ({
                             )}
                         </Link>
                       </div>
-                      <div class="post-card-content">
-                          <div class="entry-cat">
-                              <a href="blog-grid.html" class="categorie"> {post.categories.nodes[0].name}</a>
+                      <div className="post-card-content">
+                          <div className="entry-cat">
+                              <a href="blog-grid.html" className="categorie"> {post.categories.nodes[0].name}</a>
                               </div>
 
-                              <h5 class="entry-title">
+                              <h5 className="entry-title">
                               <Link to={post.uri} itemProp="url">
                                 <span itemProp="headline">{parse(title)}</span>
                               </Link>
                               </h5>
 
-                          <div class="post-exerpt">
+                          <div className="post-exerpt">
                               <p><section itemProp="description" className="archive-card-text">{parse(post.excerpt)}</section></p>
                           </div>
 
-                          <ul class="entry-meta list-inline">
-                              {/* <li class="post-author-img"><a href="author.html"> </a></li>
-                              <li class="post-author"><a href="author.html">David Smith</a> </li> */}
-                              <li class="post-date"> <span class="dot"></span>  {post.date}</li>
+                          <ul className="entry-meta list-inline">
+                              {/* <li className="post-author-img"><a href="author.html"> </a></li>
+                              <li className="post-author"><a href="author.html">David Smith</a> </li> */}
+                              <li className="post-date"> <span className="dot"></span>  {post.date}</li>
                           </ul>
                       </div>
                   </div>
@@ -85,19 +170,20 @@ const BlogIndex = ({
            
 
                    {/* <!--pagination--> */}
-                   {/* <div class="row">
-                       <div class="col-lg-12">
-                           <div class="pagination ">
-                               <ul class="list-inline">
-                                   <li class="active"> <a href="#">1</a></li>
+                   {/* <div className="row">
+                       <div className="col-lg-12">
+                           <div className="pagination ">
+                               <ul className="list-inline">
+                                   <li className="active"> <a href="#">1</a></li>
                                    <li><a href="#">2</a></li>
                                    <li><a href="#">3</a></li>
                                    <li><a href="#">4</a></li>
-                                   <li><a href="#"><i class="fas fa-arrow-right"></i></a></li>
+                                   <li><a href="#"><i className="fas fa-arrow-right"></i></a></li>
                                </ul>
                            </div>   
                        </div>
                    </div> */}
+
             </article>
            
         )

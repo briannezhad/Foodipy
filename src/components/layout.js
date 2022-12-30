@@ -95,9 +95,9 @@ const Layout = ({ isHomePage, children }) => {
                             <p>© {new Date().getFullYear()} {parse(title)} All contents of this site belong to {parse(title)}.</p>
                         </div>
                         <div class="back">
-                            <a href="#" class="back-top">
+                            <Link href="#" class="back-top">
                                 <i class="fas fa-arrow-up"></i>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -55,11 +55,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     )}
                               </div>
                               <div class="post-single-content">
-                                  <a href="#" class="categorie">{post.categories.nodes[0].name}</a> 
+                                  <Link href="#" class="categorie">{post.categories.nodes[0].name}</Link> 
                                   <h3 class="title" itemProp="headline">{parse(post.title)}</h3>
                                   <ul class="entry-meta list-inline">
-                                      <li class="post-author-img"><a href="author.html"></a></li>
-                                      <li class="post-author"><a href="#">By {post.author.node.name}</a> </li>
+                                      <li class="post-author-img"><Link href="author.html"></Link></li>
+                                      <li class="post-author"><Link href="#">By {post.author.node.name}</Link> </li>
                                       <li class="post-date"> <span class="dot"></span> {post.date}</li>
                                       {/* <li class="post-timeread"> <span class="dot"></span> 15 min Read</li>
                                       <li class="post-comment"> <span class="dot"></span> 2 comments</li> */}
