@@ -146,13 +146,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                               <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5373069496163959"
                                   crossorigin="anonymous"></script>
                                 <ins class="adsbygoogle"
-                                  style="display:block"
+                                  style={{display: 'none'}}
                                   data-ad-client="ca-pub-5373069496163959"
                                   data-ad-slot="5975223746"
                                   data-ad-format="auto"
                                   data-full-width-responsive="true"></ins>
-                                <script>
-                                  (adsbygoogle = window.adsbygoogle || []).push({});
+                              <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
                               </script>
                               </div>
                           </div>
