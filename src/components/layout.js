@@ -104,7 +104,6 @@ const Layout = ({ isHomePage, children }) => {
             </div>
         </footer>
       <Helmet>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5373069496163959" crossorigin="anonymous"></script>
         <script src="/vendor-js/jquery.min.js"></script>
         <script src="/vendor-js/bootstrap.min.js"></script>
         <script src="/vendor-js/popper.min.js"></script>
