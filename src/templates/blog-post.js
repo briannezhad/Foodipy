@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import parse from "html-react-parser"
+import { Disqus } from 'gatsby-plugin-disqus';
 
 // We're using Gutenberg so we need the block styles
 // these are copied into this project due to a conflict in the postCSS
@@ -43,7 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             <section class="mt-60  mb-30">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xl-9 side-content">
+                        <div class="col-xl-7 side-content">
                           <div class="post-single">
                               <div class="post-single-image">
                                 {/* if we have a featured image for this post let's display it */}
@@ -122,11 +123,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                           )}
                           </div>
                         </div>
-                        <div class="col-xl-3 max-width side-sidebar">
+                        <div class="col-xl-5 max-width side-sidebar">
                           <div class="widget">
                               <div class="widget-author">
                                   <div class="author-img">
-                                      <a href="author.html" class="image">
+                                      <a href="#" class="image">
                                           {/* <img src="assets/img/author/1.jpg" alt=""> */}
                                       </a>
                                   </div>
@@ -138,14 +139,20 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                   </div>
                               </div>
                           </div>
-                          {/* <div class="widget">
+                          <div class="widget">
                               <div class="section-title">
-                                  <h5>ads</h5>
+                                  <h5>Comments</h5>
                               </div>
                               <div class="widget-ads">
-                              
+                              <Disqus
+                                  config={{
+                                    url: post.uri,
+                                    identifier: post.id,
+                                    title: parse(post.title),
+                                  }}
+                              />
                               </div>
-                          </div> */}
+                          </div>
                         </div>
                     </div>
                 </div>

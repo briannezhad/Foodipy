@@ -98,7 +98,9 @@ module.exports = {
         icon: 'static/favicon.png',
       },
     },
-
+    {
+      resolve: `gatsby-plugin-disqus`,
+    },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
