@@ -12,31 +12,6 @@ const BlogIndex = ({
   pageContext: { nextPagePath, previousPagePath },
 }) => {
   const posts = data.allWpPost.nodes
-  const getFeaturedPosts = []
-
-  data.allWpPost.nodes.map(post=>{
-
-    const featuredImage = {
-      data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
-      alt: post.featuredImage?.node?.alt || ``,
-    }
-    
-    post.categories.nodes.forEach(category => {
-      console.log(category)
-      if(category.name === 'Featured'){
-        getFeaturedPosts.push({
-          title: post.title,
-          excerpt: post.excerpt,
-          date: post.date,
-          image: featuredImage,
-          uri: post.uri,
-          category: 'Featured'
-        })
-      }
-    });
-  })
-  console.log(getFeaturedPosts)
-
   if (!posts.length) {
     return (
       <Layout isHomePage>
@@ -49,7 +24,6 @@ const BlogIndex = ({
       </Layout>
     )
   }
-
   return (
     <Layout isHomePage>
       <Seo title="Discover delicious recipes and foodie tips for every occasion" />
