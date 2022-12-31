@@ -54,67 +54,6 @@ const BlogIndex = ({
     <Layout isHomePage>
       <Seo title="Discover delicious recipes and foodie tips for every occasion" />
         <main className="main">
-
-        <div className="slider-style2">
-            <div  className="swiper swiper-top">
-                <div className="swiper-wrapper">
-                {getFeaturedPosts.map(post => {
-                    return(
-                      <div className="swiper-slide slider-item" style={{backgroundImage: `url(${post.image.data.images.fallback.src})`}} key={post.uri}>
-                        <div className="container-fluid">
-                            <div className="row">
-                                <div className="col-xl-7 col-lg-9 col-md-12">
-                                    <div className="slider-item-inner">
-                                        <div className="slider-item-content">
-                                        <div className="entry-cat ">
-                                            <Link href="#" className="categorie">{post.category} </Link> 
-                                        </div>
-                                        <h1 className="entry-title">
-                                            <Link to={post.uri}>{parse(post.title)}</Link>
-                                        </h1>
-                                        <ul className="entry-meta list-inline">
-                                            <li className="post-author-img"><a href="author.html"> 
-                                            {/* <img src="assets/img/author/1.jpg" alt=""> */}
-                                              </a></li>
-                                            <li className="post-date"> <span className="dot"></span>  {post.date}</li>
-                                            {/* <li className="post-timeread"> <span className="dot"></span> 15 min Read</li>
-                                            <li className="post-comment"> <span className="dot"></span> 2 comments</li> */}
-                                        </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                    )
-                })}
-                </div>
-            </div>
-
-            <div thumbsSlider="" className="swiper swiper-bottom container-fluid" >
-                <div className="swiper-wrapper ">
-                {getFeaturedPosts.map(post => {
-                    return(
-                      <div className="swiper-slide">
-                        <div className="post-item">
-                            <img src={post.image.data.images.fallback.src}  alt="" />
-                            <div className="details">
-                                <p className="entry-title"> 
-                                    <span>{post.title}</span>
-                                    </p>
-                                <ul className="entry-meta list-inline">
-                                    <li className="post-date"> <i className="fas fa-clock"></i> {post.date}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    )
-                  })
-              }  
-                </div>
-            </div>      
-        </div>
-
         <section className="mt-90">
         <div className="container-fluid">
         <div className="row">
